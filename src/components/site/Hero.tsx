@@ -63,19 +63,20 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="text-display font-bold leading-[0.95] tracking-tight text-white"
+            className="text-display font-bold leading-[1.05] tracking-tight text-white"
             style={{ fontSize: "clamp(2.75rem, 9vw, 8rem)" }}
           >
-            Lucy <span className="italic text-primary">Arroyo</span>
+            <span className="italic text-primary">Lucy</span>{" "}
+            <span className="text-white">Arroyo</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-6 max-w-xl text-lg md:text-2xl text-white/85 text-display italic"
+            className="mt-6 max-w-2xl text-lg md:text-2xl text-white/85 text-display italic"
           >
-            &ldquo;Donde el arte cobra vida a través del movimiento.&rdquo;
+            &ldquo;Brindamos bienestar integral por medio de la danza, fomentando el desarrollo socio cultural.&rdquo;
           </motion.p>
 
           <motion.div
