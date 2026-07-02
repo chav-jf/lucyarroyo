@@ -33,8 +33,8 @@ export function Hero() {
       </motion.div>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
       <div
         className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none"
         style={{
