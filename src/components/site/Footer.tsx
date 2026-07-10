@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+
+const LOGO_URL = "/logo.png";
 
 const socials = [
   { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/lucyarroyo_escueladebaile/" },
@@ -13,7 +14,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="flex items-center gap-4">
-            <img src={logoAsset.url} alt="Lucy Arroyo" className="h-14 w-auto" />
+            <img src={LOGO_URL} alt="Lucy Arroyo" className="h-14 w-auto" />
             <div>
               <div className="text-display text-lg font-semibold">Lucy Arroyo</div>
               <div className="text-xs uppercase tracking-widest text-white/50">Escuela de Baile</div>

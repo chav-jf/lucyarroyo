@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Play, ChevronDown } from "lucide-react";
-import heroVideo from "@/assets/hero-dance.mp4.asset.json";
+
+const HERO_VIDEO = "/hero-dance.mp4";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -27,7 +28,7 @@ export function Hero() {
       {/* Video */}
       <motion.div style={{ scale }} className="absolute inset-0">
         <video
-          src={heroVideo.url}
+          src={HERO_VIDEO}
           autoPlay
           muted
           loop

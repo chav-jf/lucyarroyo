@@ -10,9 +10,10 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import logoAsset from "../assets/logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+
+const LOGO_URL = "/logo.png";
 
 function NotFoundComponent() {
   return (
@@ -93,7 +94,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Formación pedagógica y cultural desde 1988. Donde el arte cobra vida a través del movimiento.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: logoAsset.url },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Escuela de Baile Lucy Arroyo | Donde el arte cobra vida" },
       {
@@ -101,12 +102,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Formación pedagógica y cultural desde 1988. Donde el arte cobra vida a través del movimiento.",
       },
-      { name: "twitter:image", content: logoAsset.url },
+      { name: "twitter:image", content: LOGO_URL },
       { name: "theme-color", content: "#050505" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: logoAsset.url, type: "image/png" },
+      { rel: "icon", href: LOGO_URL, type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

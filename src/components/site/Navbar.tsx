@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+
+const LOGO_URL = "/logo.png";
 
 const links = [
   { href: "#inicio", label: "Inicio" },
@@ -42,7 +43,7 @@ export function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 md:px-8">
           <a href="#inicio" className="flex items-center gap-3 shrink-0" aria-label="Lucy Arroyo — Inicio">
             <img
-              src={logoAsset.url}
+              src={LOGO_URL}
               alt="Lucy Arroyo Escuela de Baile"
               className={`transition-all duration-500 ${
                 scrolled ? "h-10 md:h-11" : "h-12 md:h-14"
@@ -99,7 +100,7 @@ export function Navbar() {
             className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-background/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="flex items-center justify-between px-5 py-5">
-              <img src={logoAsset.url} alt="Lucy Arroyo" className="h-12 w-auto" />
+              <img src={LOGO_URL} alt="Lucy Arroyo" className="h-12 w-auto" />
               <button
                 className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/5"
                 onClick={() => setOpen(false)}
