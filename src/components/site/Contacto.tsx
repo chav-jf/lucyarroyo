@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MessageCircle, MapPin, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin, Instagram, Facebook, Music2 } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
 
 const WHATSAPP_NUMBER = "573155562072";
@@ -39,6 +39,7 @@ const contactInfo = [
 const socials = [
   { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/lucyarroyo_escueladebaile/" },
   { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/escueladebailelucy" },
+  { Icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@lucyarroyo_escuelabaile" },
 ];
 
 export function Contacto() {

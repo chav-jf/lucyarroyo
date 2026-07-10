@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Music2 } from "lucide-react";
 
 const LOGO_URL = "/logo.png";
 
 const socials = [
   { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/lucyarroyo_escueladebaile/" },
   { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/escueladebailelucy" },
+  { Icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@lucyarroyo_escuelabaile" },
 ];
 
 export function Footer() {

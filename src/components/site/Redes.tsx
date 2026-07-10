@@ -1,6 +1,11 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Pause, Instagram } from "lucide-react";
+import { Play, Pause, Instagram, Music2 } from "lucide-react";
+
+const socials = [
+  { Icon: Instagram, label: "@lucyarroyo_escueladebaile", href: "https://www.instagram.com/lucyarroyo_escueladebaile/" },
+  { Icon: Music2, label: "@lucyarroyo_escuelabaile", href: "https://www.tiktok.com/@lucyarroyo_escuelabaile" },
+];
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
 
 const reels = [
@@ -103,24 +108,28 @@ export function Redes() {
             className="text-display font-bold leading-[1.05]"
             style={{ fontSize: "clamp(2rem, 5vw, 4.25rem)" }}
           >
-            Vive la escuela en <span className="italic text-primary">Instagram</span>.
+            Vive la escuela en <span className="italic text-primary">redes</span>.
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-6 text-lg text-white/60">
             Los mejores momentos, ensayos y reels de la comunidad Lucy Arroyo.
           </motion.p>
-          <motion.a
-            variants={fadeUp}
-            href="https://www.instagram.com/lucyarroyo_escueladebaile/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white"
-          >
-            <Instagram className="h-4 w-4 text-primary" />
-            <span className="relative">
-              Síguenos @lucyarroyo_escueladebaile
-              <span className="absolute inset-x-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-            </span>
-          </motion.a>
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+            {socials.map(({ Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-white"
+              >
+                <Icon className="h-4 w-4 text-primary" />
+                <span className="relative">
+                  Síguenos {label}
+                  <span className="absolute inset-x-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                </span>
+              </a>
+            ))}
+          </motion.div>
         </motion.div>
 
         <motion.div
