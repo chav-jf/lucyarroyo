@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import { whatsappUrl, INSCRIPCION_MSG } from "@/lib/whatsapp";
 
 const LOGO_URL = "/logo.png";
 
@@ -74,7 +75,9 @@ export function Navbar() {
 
           <div className="hidden lg:block">
             <a
-              href="/#contacto"
+              href={whatsappUrl(INSCRIPCION_MSG)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent hover:shadow-[0_0_30px_-6px_var(--color-primary)]"
             >
               Inscríbete
@@ -138,7 +141,9 @@ export function Navbar() {
                 </Link>
               </motion.div>
               <a
-                href="/#contacto"
+                href={whatsappUrl(INSCRIPCION_MSG)}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-semibold text-white"
               >

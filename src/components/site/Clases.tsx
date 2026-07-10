@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
+import { whatsappUrl } from "@/lib/whatsapp";
 import { Placeholder } from "./Placeholder";
 
 const clases = [
@@ -88,7 +89,9 @@ export function Clases() {
                 <p className="mt-2 text-white/60">{c.desc}</p>
 
                 <a
-                  href="#contacto"
+                  href={whatsappUrl(`Hola, quiero más información sobre las clases de ${c.name}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group/link"
                 >
                   <span className="relative">

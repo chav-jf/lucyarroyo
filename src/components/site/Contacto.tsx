@@ -2,8 +2,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MessageCircle, MapPin, Instagram, Facebook, Music2 } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
-
-const WHATSAPP_NUMBER = "573155562072";
+import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
 const contactInfo = [
   {

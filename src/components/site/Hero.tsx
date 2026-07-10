@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Play, ChevronDown } from "lucide-react";
+import { whatsappUrl, INSCRIPCION_MSG } from "@/lib/whatsapp";
 
 const HERO_VIDEO = "/hero-dance.mp4";
 
@@ -92,7 +93,9 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <a
-              href="#contacto"
+              href={whatsappUrl(INSCRIPCION_MSG)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 text-sm md:text-base font-semibold text-white transition-all hover:bg-accent hover:shadow-[0_10px_40px_-10px_var(--color-primary)]"
             >
               Inscríbete ahora
