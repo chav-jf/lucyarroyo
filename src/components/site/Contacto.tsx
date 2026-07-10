@@ -29,7 +29,7 @@ const contactInfo = [
   {
     Icon: MapPin,
     label: "Estudio",
-    value: "Cra. 22 No. 20-39, 2do piso — Centro, Pasto",
+    value: "Cra. 22 No. 20-39, 2do piso — Centro, lateral Hotel Fernando Plaza, Pasto",
     href: "https://www.google.com/maps/place/Escuela+de+Baile+Lucy+Arroyo/@1.213153,-77.275845,812m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e2ed4859a5ae7a5:0xca506807f6d8ec61!8m2!3d1.213153!4d-77.275845!16s%2Fg%2F11fylv55jr",
     external: true,
   },

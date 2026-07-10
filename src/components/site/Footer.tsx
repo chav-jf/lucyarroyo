@@ -26,6 +26,7 @@ export function Footer() {
             <a href="/#nosotros" className="hover:text-white transition-colors">Nosotros</a>
             <a href="/#clases" className="hover:text-white transition-colors">Clases</a>
             <a href="/#servicios" className="hover:text-white transition-colors">Servicios</a>
+            <a href="/#programas" className="hover:text-white transition-colors">Horarios</a>
             <a href="/#planes" className="hover:text-white transition-colors">Planes</a>
             <a href="/#profesores" className="hover:text-white transition-colors">Profesores</a>
             <Link to="/bailarines" className="hover:text-white transition-colors">Bailarines</Link>

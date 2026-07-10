@@ -12,6 +12,7 @@ const links = [
   { href: "/#nosotros", label: "Nosotros" },
   { href: "/#servicios", label: "Servicios" },
   { href: "/#clases", label: "Clases" },
+  { href: "/#programas", label: "Horarios" },
   { href: "/#planes", label: "Planes" },
   { href: "/#profesores", label: "Profesores" },
   { href: "/#galeria", label: "Galería" },

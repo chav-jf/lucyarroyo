@@ -7,8 +7,9 @@ const cop = new Intl.NumberFormat("es-CO");
 const frecuencia = [
   { dias: "1 día a la semana", precio: 110000 },
   { dias: "2 días a la semana", precio: 140000 },
-  { dias: "3 días a la semana", precio: 150000 },
+  { dias: "3 días a la semana", precio: 160000 },
   { dias: "4 días a la semana", precio: 180000 },
+  { dias: "5 días a la semana", precio: 200000 },
 ];
 
 const sueltas = [
@@ -18,9 +19,14 @@ const sueltas = [
     desc: "Ideal para probar antes de inscribirte.",
   },
   {
-    label: "1 clase personalizada",
+    label: "Hora personalizada",
     precio: 60000,
     desc: "Atención individual con nuestros instructores.",
+  },
+  {
+    label: "Taller de un ritmo",
+    precio: 500000,
+    desc: "Intensivo mensual enfocado en un solo ritmo.",
   },
 ];
 
@@ -77,8 +83,8 @@ export function Planes() {
               <div className="text-display text-2xl font-semibold">Inscripción única por año</div>
             </div>
           </div>
-          <div className="text-display text-4xl font-bold text-primary">
-            ${cop.format(150000)}
+          <div className="text-display text-4xl font-bold tabular-nums text-primary">
+            ${cop.format(120000)}
           </div>
         </motion.div>
 
@@ -88,7 +94,7 @@ export function Planes() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerParent}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6"
         >
           {frecuencia.map((f) => (
             <motion.div
@@ -97,7 +103,9 @@ export function Planes() {
               className="rounded-3xl border border-white/10 bg-white/[0.02] p-7 hover:border-primary/40 transition-colors"
             >
               <div className="text-sm uppercase tracking-widest text-white/50">{f.dias}</div>
-              <div className="mt-4 text-display text-3xl font-bold">${cop.format(f.precio)}</div>
+              <div className="mt-4 text-display text-2xl md:text-3xl font-bold tabular-nums">
+                ${cop.format(f.precio)}
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -108,7 +116,7 @@ export function Planes() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerParent}
-          className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6"
+          className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {sueltas.map((s) => (
             <motion.div
@@ -120,7 +128,7 @@ export function Planes() {
                 <div className="text-display text-xl font-semibold">{s.label}</div>
                 <p className="mt-1 text-sm text-white/60">{s.desc}</p>
               </div>
-              <div className="text-display text-2xl font-bold text-primary shrink-0">
+              <div className="text-display text-2xl font-bold tabular-nums text-primary shrink-0">
                 ${cop.format(s.precio)}
               </div>
             </motion.div>
