@@ -4,22 +4,33 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
 import { Placeholder } from "./Placeholder";
 
-// Para poblar la galería, deja las fotos en `public/galeria/` con estos nombres
-// (01.webp … 08.webp). Mientras no existan, cada casilla muestra un marcador
-// elegante en lugar de una imagen rota.
+// Fotos reales en `public/galeria/` (01–10). Si algún archivo faltara, la casilla
+// muestra un marcador elegante en lugar de una imagen rota.
 const items = [
-  { src: "/galeria/01.webp", span: "row-span-2" },
-  { src: "/galeria/02.webp", span: "" },
-  { src: "/galeria/03.webp", span: "" },
-  { src: "/galeria/04.webp", span: "" },
-  { src: "/galeria/05.webp", span: "row-span-2" },
-  { src: "/galeria/06.webp", span: "" },
-  { src: "/galeria/07.webp", span: "col-span-2" },
-  { src: "/galeria/08.webp", span: "" },
+  { src: "/galeria/01.jpg", span: "row-span-2", alt: "Grupo de bailarines de Lucy Arroyo posando en las escaleras" },
+  { src: "/galeria/02.jpg", span: "", alt: "Pareja de baile en una presentación" },
+  { src: "/galeria/03.jpg", span: "", alt: "Bailarinas con vestuario rojo en la escuela Lucy Arroyo" },
+  { src: "/galeria/04.jpg", span: "", alt: "Jóvenes bailarinas en una presentación con luces" },
+  { src: "/galeria/05.jpg", span: "row-span-2", alt: "Bailarina con traje típico de Ñapanga en el centro de Pasto" },
+  { src: "/galeria/06.jpg", span: "", alt: "Presentación de baile en un evento social" },
+  { src: "/galeria/07.jpg", span: "col-span-2", alt: "Gran grupo de bailarines celebrando el aniversario de Lucy Arroyo" },
+  { src: "/galeria/08.jpg", span: "", alt: "Bailarines de Lucy Arroyo con trofeo de competencia" },
+  { src: "/galeria/09.jpg", span: "", alt: "Pareja de danza folclórica con poncho y pañolón" },
+  { src: "/galeria/10.jpg", span: "", alt: "Grupo de niñas bailarinas en el escenario de Lucy Arroyo" },
 ];
 
 /** Imagen de galería con degradado elegante a Placeholder si el archivo no existe. */
-function GalleryImage({ src, index, className }: { src: string; index: number; className?: string }) {
+function GalleryImage({
+  src,
+  alt,
+  index,
+  className,
+}: {
+  src: string;
+  alt: string;
+  index: number;
+  className?: string;
+}) {
   const [failed, setFailed] = useState(false);
   if (failed) {
     return (
@@ -29,7 +40,7 @@ function GalleryImage({ src, index, className }: { src: string; index: number; c
   return (
     <img
       src={src}
-      alt={`Escuela de Baile Lucy Arroyo — foto de galería ${index + 1}`}
+      alt={alt}
       loading="lazy"
       onError={() => setFailed(true)}
       className={`object-cover ${className ?? ""}`}
@@ -95,7 +106,7 @@ export function Galeria() {
               className={`group relative cursor-pointer overflow-hidden rounded-2xl ${it.span}`}
             >
               <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                <GalleryImage src={it.src} index={i} className="h-full w-full" />
+                <GalleryImage src={it.src} alt={it.alt} index={i} className="h-full w-full" />
               </div>
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors" />
               <div className="absolute bottom-3 left-3 text-xs uppercase tracking-widest text-white/0 group-hover:text-white/90 transition-colors">
@@ -151,7 +162,7 @@ export function Galeria() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-4xl aspect-[4/3] cursor-default rounded-2xl overflow-hidden"
             >
-              <GalleryImage src={items[open].src} index={open} className="h-full w-full" />
+              <GalleryImage src={items[open].src} alt={items[open].alt} index={open} className="h-full w-full" />
             </motion.div>
           </motion.div>
         )}
