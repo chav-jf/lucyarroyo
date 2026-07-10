@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import logoAsset from "@/assets/logo.png.asset.json";
 
 const links = [
   { href: "#inicio", label: "Inicio" },
   { href: "#nosotros", label: "Nosotros" },
+  { href: "#servicios", label: "Servicios" },
   { href: "#clases", label: "Clases" },
+  { href: "#planes", label: "Planes" },
   { href: "#profesores", label: "Profesores" },
   { href: "#galeria", label: "Galería" },
   { href: "#redes", label: "Redes" },
@@ -58,6 +61,13 @@ export function Navbar() {
                 <span className="absolute inset-x-4 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100 origin-left" />
               </a>
             ))}
+            <Link
+              to="/bailarines"
+              className="group relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
+            >
+              <span>Bailarines</span>
+              <span className="absolute inset-x-4 -bottom-0.5 h-px scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100 origin-left" />
+            </Link>
           </nav>
 
           <div className="hidden lg:block">
@@ -70,7 +80,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white"
+            className="lg:hidden inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/5 text-white"
             onClick={() => setOpen(true)}
             aria-label="Abrir menú"
           >
@@ -86,19 +96,19 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-background/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="flex items-center justify-between px-5 py-5">
               <img src={logoAsset.url} alt="Lucy Arroyo" className="h-12 w-auto" />
               <button
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5"
+                className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/5"
                 onClick={() => setOpen(false)}
                 aria-label="Cerrar menú"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <nav className="flex flex-col gap-1 px-6 pt-6">
+            <nav className="flex flex-col gap-1 px-6 pb-10 pt-6">
               {links.map((l, i) => (
                 <motion.a
                   key={l.href}
@@ -112,6 +122,19 @@ export function Navbar() {
                   {l.label}
                 </motion.a>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05 * links.length, duration: 0.4 }}
+              >
+                <Link
+                  to="/bailarines"
+                  onClick={() => setOpen(false)}
+                  className="block text-display text-4xl font-semibold py-3 border-b border-white/5 hover:text-primary transition-colors"
+                >
+                  Bailarines
+                </Link>
+              </motion.div>
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}

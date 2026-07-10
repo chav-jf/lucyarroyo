@@ -5,6 +5,17 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { loadEnv } from "vite";
+
+// The bundled lovableAssetsProxyPlugin reads process.env.LOVABLE_PREVIEW_HOST
+// at config-resolution time, before Vite's own env loading populates it —
+// so load .env* here explicitly to make local `.env.local` overrides work.
+if (!process.env.LOVABLE_PREVIEW_HOST) {
+  const env = loadEnv("development", process.cwd(), "");
+  if (env.LOVABLE_PREVIEW_HOST) {
+    process.env.LOVABLE_PREVIEW_HOST = env.LOVABLE_PREVIEW_HOST;
+  }
+}
 
 export default defineConfig({
   tanstackStart: {

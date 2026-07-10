@@ -1,9 +1,15 @@
-import { Instagram, Facebook, Music2 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Instagram, Facebook } from "lucide-react";
 import logoAsset from "@/assets/logo.png.asset.json";
+
+const socials = [
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/lucyarroyo_escueladebaile/" },
+  { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/escueladebailelucy" },
+];
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-black py-14">
+    <footer className="relative border-t border-white/5 bg-background py-14">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="flex items-center gap-4">
@@ -17,17 +23,22 @@ export function Footer() {
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
             <a href="#nosotros" className="hover:text-white transition-colors">Nosotros</a>
             <a href="#clases" className="hover:text-white transition-colors">Clases</a>
+            <a href="#servicios" className="hover:text-white transition-colors">Servicios</a>
+            <a href="#planes" className="hover:text-white transition-colors">Planes</a>
             <a href="#profesores" className="hover:text-white transition-colors">Profesores</a>
+            <Link to="/bailarines" className="hover:text-white transition-colors">Bailarines</Link>
             <a href="#galeria" className="hover:text-white transition-colors">Galería</a>
             <a href="#contacto" className="hover:text-white transition-colors">Contacto</a>
           </nav>
 
           <div className="flex items-center gap-2">
-            {[Instagram, Facebook, Music2].map((Icon, k) => (
+            {socials.map(({ Icon, label, href }) => (
               <a
-                key={k}
-                href="#"
-                aria-label="Red social"
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white hover:bg-primary hover:border-primary transition-colors"
               >
                 <Icon className="h-4 w-4" />

@@ -83,13 +83,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Academia de baile Lucy Arroyo. Salsa, bachata, kizomba, urbano y más. Clases premium impartidas por profesionales con más de 10 años de experiencia.",
+          "Escuela de Baile Lucy Arroyo en Pasto. Salsa, bachata, tango, urbano y más, con formación pedagógica y cultural desde 1988. Clases para niños y adultos y bailarines profesionales para tus eventos.",
       },
       { name: "author", content: "Escuela de Baile Lucy Arroyo" },
       { property: "og:title", content: "Escuela de Baile Lucy Arroyo | Donde el arte cobra vida" },
       {
         property: "og:description",
-        content: "Donde el arte cobra vida a través del movimiento.",
+        content:
+          "Formación pedagógica y cultural desde 1988. Donde el arte cobra vida a través del movimiento.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: logoAsset.url },
@@ -97,15 +98,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Escuela de Baile Lucy Arroyo | Donde el arte cobra vida" },
       {
         name: "twitter:description",
-        content: "Donde el arte cobra vida a través del movimiento.",
+        content:
+          "Formación pedagógica y cultural desde 1988. Donde el arte cobra vida a través del movimiento.",
       },
       { name: "twitter:image", content: logoAsset.url },
       { name: "theme-color", content: "#050505" },
-      { name: "description", content: "Arroyo Dance Experience is a modern, elegant, and interactive website for the Lucy Arroyo Dance Academy." },
-      { property: "og:description", content: "Arroyo Dance Experience is a modern, elegant, and interactive website for the Lucy Arroyo Dance Academy." },
-      { name: "twitter:description", content: "Arroyo Dance Experience is a modern, elegant, and interactive website for the Lucy Arroyo Dance Academy." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a7cb91cb-ef20-4858-88c3-f354e9c484d5/id-preview-f057eb92--1ba69202-6198-471d-92a8-c5d89c60cf85.lovable.app-1783027231495.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a7cb91cb-ef20-4858-88c3-f354e9c484d5/id-preview-f057eb92--1ba69202-6198-471d-92a8-c5d89c60cf85.lovable.app-1783027231495.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

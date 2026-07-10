@@ -2,19 +2,22 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Pause, Instagram } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
-import reel1 from "@/assets/reel-1.mp4.asset.json";
-import reel2 from "@/assets/reel-2.mp4.asset.json";
 
 const reels = [
   {
-    src: reel1.url,
-    title: "Sesión de Salsa",
-    desc: "Ensayo previo a nuestra presentación mensual en el estudio.",
+    src: "/eventos/evento1.mp4",
+    title: "Nuestros eventos",
+    desc: "Bailarines profesionales de Lucy Arroyo en escena.",
   },
   {
-    src: reel2.url,
-    title: "Bachata Sensual",
-    desc: "Coreografía en pareja del taller intensivo de fin de semana.",
+    src: "/eventos/evento2.mp4",
+    title: "En comunidad",
+    desc: "La energía de nuestra escuela fuera del estudio.",
+  },
+  {
+    src: "/eventos/evento3.mp4",
+    title: "Presentaciones",
+    desc: "Shows para eventos sociales y empresariales.",
   },
 ];
 
@@ -26,6 +29,7 @@ function ReelCard({ src, title, desc, i }: { src: string; title: string; desc: s
     const v = ref.current;
     if (!v) return;
     if (v.paused) {
+      v.muted = false;
       v.play();
       setPlaying(true);
     } else {
@@ -41,7 +45,6 @@ function ReelCard({ src, title, desc, i }: { src: string; title: string; desc: s
           ref={ref}
           src={src}
           loop
-          muted
           playsInline
           preload="metadata"
           onEnded={() => setPlaying(false)}
@@ -52,7 +55,7 @@ function ReelCard({ src, title, desc, i }: { src: string; title: string; desc: s
         <button
           onClick={toggle}
           aria-label={playing ? "Pausar" : "Reproducir"}
-          className="absolute inset-0 grid place-items-center"
+          className="absolute inset-0 grid cursor-pointer place-items-center"
         >
           <span
             className={`grid h-16 w-16 place-items-center rounded-full bg-white/95 text-black shadow-2xl transition-all duration-300 ${
@@ -105,6 +108,19 @@ export function Redes() {
           <motion.p variants={fadeUp} className="mt-6 text-lg text-white/60">
             Los mejores momentos, ensayos y reels de la comunidad Lucy Arroyo.
           </motion.p>
+          <motion.a
+            variants={fadeUp}
+            href="https://www.instagram.com/lucyarroyo_escueladebaile/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white"
+          >
+            <Instagram className="h-4 w-4 text-primary" />
+            <span className="relative">
+              Síguenos @lucyarroyo_escueladebaile
+              <span className="absolute inset-x-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+            </span>
+          </motion.a>
         </motion.div>
 
         <motion.div
@@ -112,7 +128,7 @@ export function Redes() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerParent}
-          className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14 md:gap-8"
         >
           {reels.map((r, i) => (
             <ReelCard key={i} src={r.src} title={r.title} desc={r.desc} i={i} />

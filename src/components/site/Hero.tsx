@@ -1,23 +1,28 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Play, ChevronDown } from "lucide-react";
 import heroVideo from "@/assets/hero-dance.mp4.asset.json";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const yRaw = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const opacityRaw = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const scaleRaw = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  // Con "reduce motion" desactivamos el parallax scroll-linked y el zoom del video.
+  const y = reduceMotion ? "0%" : yRaw;
+  const opacity = reduceMotion ? 1 : opacityRaw;
+  const scale = reduceMotion ? 1 : scaleRaw;
 
   return (
     <section
       ref={ref}
       id="inicio"
-      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-black"
+      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-background"
     >
       {/* Video */}
       <motion.div style={{ scale }} className="absolute inset-0">
@@ -116,8 +121,8 @@ export function Hero() {
       >
         <span className="text-[10px] uppercase tracking-[0.35em]">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+          transition={reduceMotion ? undefined : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="grid h-9 w-9 place-items-center rounded-full border border-white/30"
         >
           <ChevronDown className="h-4 w-4" />

@@ -4,12 +4,12 @@ import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
 import { Placeholder } from "./Placeholder";
 
 const clases = [
-  { name: "Salsa", desc: "Ritmo, sabor y conexión en pareja.", tag: "Latino" },
-  { name: "Bachata", desc: "Sensualidad y elegancia dominicana.", tag: "Latino" },
-  { name: "Kizomba", desc: "Movimientos suaves y musicalidad africana.", tag: "Afro" },
-  { name: "Reggaeton", desc: "Actitud, fuerza y estilo urbano.", tag: "Urbano" },
-  { name: "Urbano", desc: "Hip-hop y estilos callejeros actuales.", tag: "Urbano" },
-  { name: "Contemporáneo", desc: "Expresión libre y técnica escénica.", tag: "Escénico" },
+  { name: "Salsa", desc: "Ritmo, sabor y conexión en pareja.", tag: "Latino", photo: "/estilos/salsa.png" },
+  { name: "Bachata", desc: "Sensualidad y elegancia dominicana.", tag: "Latino", photo: "/estilos/bachata.png" },
+  { name: "Kizomba", desc: "Movimientos suaves y musicalidad africana.", tag: "Afro", photo: "/estilos/Kizomba.png" },
+  { name: "Reggaeton", desc: "Actitud, fuerza y estilo urbano.", tag: "Urbano", photo: "/estilos/Reggaeton.png" },
+  { name: "Urbano", desc: "Hip-hop y estilos callejeros actuales.", tag: "Urbano", photo: "/estilos/urbano.png" },
+  { name: "Contemporáneo", desc: "Expresión libre y técnica escénica.", tag: "Escénico", photo: "/estilos/contemporaneo.png" },
 ];
 
 export function Clases() {
@@ -60,7 +60,16 @@ export function Clases() {
             >
               <div className="relative aspect-[4/5] overflow-hidden">
                 <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                  <Placeholder label={c.name} index={String(i + 1).padStart(2, "0")} className="h-full w-full" />
+                  {c.photo ? (
+                    <img
+                      src={c.photo}
+                      alt={`Clase de ${c.name} en Escuela de Baile Lucy Arroyo`}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Placeholder label={c.name} index={String(i + 1).padStart(2, "0")} className="h-full w-full" />
+                  )}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500 mix-blend-multiply" />

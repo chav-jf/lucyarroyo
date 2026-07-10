@@ -1,18 +1,34 @@
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Music2 } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
-import { Placeholder } from "./Placeholder";
 
 const profesores = [
-  { name: "Lucy Arroyo", role: "Directora / Salsa & Bachata" },
-  { name: "Carlos Méndez", role: "Kizomba / Afro" },
-  { name: "Andrea Ruiz", role: "Reggaeton / Urbano" },
-  { name: "Mateo Rivas", role: "Contemporáneo" },
+  {
+    name: "Lucy Arroyo",
+    role: "Directora y Fundadora",
+    photo: "/profesores/lucy_arroyo.png",
+    instagram: "https://www.instagram.com/lucyarroyo_guerrero/",
+    handle: "lucyarroyo_guerrero",
+  },
+  {
+    name: "Lucy Virginia Arroyo",
+    role: "Instructora de Baile",
+    photo: "/profesores/virginia.png",
+    instagram: "https://www.instagram.com/lucyvirginiaa/",
+    handle: "lucyvirginiaa",
+  },
+  {
+    name: "Francisco Pantoja",
+    role: "Instructor de Baile",
+    photo: "/profesores/francisco.png",
+    instagram: "https://www.instagram.com/guidofpantoja/",
+    handle: "guidofpantoja",
+  },
 ];
 
 export function Profesores() {
   return (
-    <section id="profesores" className="relative py-24 md:py-36 bg-gradient-to-b from-background via-background to-black">
+    <section id="profesores" className="relative py-24 md:py-36 bg-gradient-to-b from-background via-background to-background">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <motion.div
           initial="hidden"
@@ -42,9 +58,9 @@ export function Profesores() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerParent}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {profesores.map((p, i) => (
+          {profesores.map((p) => (
             <motion.div
               key={p.name}
               variants={fadeUp}
@@ -52,33 +68,28 @@ export function Profesores() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-                  <Placeholder
-                    label={p.name}
-                    index={String(i + 1).padStart(2, "0")}
-                    className="h-full w-full"
+                  <img
+                    src={p.photo}
+                    alt={`${p.name}, ${p.role} en Escuela de Baile Lucy Arroyo`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-
-                {/* social overlay */}
-                <div className="absolute inset-x-5 bottom-24 flex gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  {[Instagram, Facebook, Music2].map((Icon, k) => (
-                    <a
-                      key={k}
-                      href="#"
-                      aria-label="Red social"
-                      className="grid h-10 w-10 place-items-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-primary hover:border-primary transition-colors"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  ))}
-                </div>
               </div>
               <div className="relative p-6">
                 <h3 className="text-display text-2xl font-semibold">{p.name}</h3>
                 <p className="mt-1 text-sm uppercase tracking-widest text-primary/90">
                   {p.role}
                 </p>
+                <a
+                  href={p.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-primary transition-colors"
+                >
+                  <Instagram className="h-3.5 w-3.5" />@{p.handle}
+                </a>
               </div>
             </motion.div>
           ))}
