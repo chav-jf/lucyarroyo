@@ -17,6 +17,21 @@ const items = [
   { src: "/galeria/08.jpg", span: "", alt: "Bailarines de Lucy Arroyo con trofeo de competencia" },
   { src: "/galeria/09.jpg", span: "", alt: "Pareja de danza folclórica con poncho y pañolón" },
   { src: "/galeria/10.jpg", span: "", alt: "Grupo de niñas bailarinas en el escenario de Lucy Arroyo" },
+  { src: "/galeria/11.jpg", span: "", alt: "Fila de bailarinas en una presentación de salsa" },
+  { src: "/galeria/12.jpg", span: "row-span-2", alt: "Pareja de baile en una pose elegante" },
+  { src: "/galeria/13.jpg", span: "", alt: "Bailarina con traje típico girando en una galería de arte" },
+  { src: "/galeria/14.jpg", span: "", alt: "Niñas con traje tricolor de Colombia en una plaza de Pasto" },
+  { src: "/galeria/15.jpg", span: "", alt: "Bailarina solista frente al logo de Lucy Arroyo" },
+  { src: "/galeria/16.jpg", span: "row-span-2", alt: "Pareja de baile en un escenario con humo y luces dramáticas" },
+  { src: "/galeria/17.jpg", span: "col-span-2", alt: "Pareja de tango bailando al aire libre" },
+  { src: "/galeria/18.jpg", span: "col-span-2", alt: "Gran grupo de bailarines en el escenario de Lucy Arroyo" },
+  { src: "/galeria/19.jpg", span: "", alt: "Bailarinas con traje típico de Ñapanga en un evento cultural" },
+  { src: "/galeria/20.jpg", span: "", alt: "Grupo de niños bailarines con vestuario dorado" },
+  { src: "/galeria/21.jpg", span: "", alt: "Grupo de niños bailarines celebrando en el escenario" },
+  { src: "/galeria/22.jpg", span: "col-span-2", alt: "Elenco de bailarines de Lucy Arroyo en una presentación" },
+  { src: "/galeria/23.jpg", span: "row-span-2", alt: "Dos niñas bailando en el escenario" },
+  { src: "/galeria/24.jpg", span: "", alt: "Bailarina solista en una pose de danza contemporánea" },
+  { src: "/galeria/25.jpg", span: "", alt: "Bailarina con vestuario folclórico tricolor" },
 ];
 
 /** Imagen de galería con degradado elegante a Placeholder si el archivo no existe. */
