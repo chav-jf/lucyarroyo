@@ -22,14 +22,14 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
-            <a href="#nosotros" className="hover:text-white transition-colors">Nosotros</a>
-            <a href="#clases" className="hover:text-white transition-colors">Clases</a>
-            <a href="#servicios" className="hover:text-white transition-colors">Servicios</a>
-            <a href="#planes" className="hover:text-white transition-colors">Planes</a>
-            <a href="#profesores" className="hover:text-white transition-colors">Profesores</a>
+            <a href="/#nosotros" className="hover:text-white transition-colors">Nosotros</a>
+            <a href="/#clases" className="hover:text-white transition-colors">Clases</a>
+            <a href="/#servicios" className="hover:text-white transition-colors">Servicios</a>
+            <a href="/#planes" className="hover:text-white transition-colors">Planes</a>
+            <a href="/#profesores" className="hover:text-white transition-colors">Profesores</a>
             <Link to="/bailarines" className="hover:text-white transition-colors">Bailarines</Link>
-            <a href="#galeria" className="hover:text-white transition-colors">Galería</a>
-            <a href="#contacto" className="hover:text-white transition-colors">Contacto</a>
+            <a href="/#galeria" className="hover:text-white transition-colors">Galería</a>
+            <a href="/#contacto" className="hover:text-white transition-colors">Contacto</a>
           </nav>
 
           <div className="flex items-center gap-2">

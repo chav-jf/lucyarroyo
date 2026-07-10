@@ -7,7 +7,7 @@ import {
   animate,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, VolumeX } from "lucide-react";
 import { fadeUp, staggerParent, viewportOnce } from "@/lib/motion";
 
 const stats = [
@@ -43,19 +43,52 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 
 export function Nosotros() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoWrapRef = useRef<HTMLDivElement>(null);
+  const videoInView = useInView(videoWrapRef, { amount: 0.5 });
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [videoMuted, setVideoMuted] = useState(true);
 
+  const syncState = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    setVideoPlaying(!v.paused);
+    setVideoMuted(v.muted);
+  };
+
+  // Reproduce al entrar en pantalla intentando activar el audio; si el navegador
+  // bloquea el autoplay con sonido, cae a mudo (el botón permite activarlo con un clic).
+  // Pausa al salir de pantalla para no dejar el audio sonando fuera de vista.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (videoInView) {
+      v.muted = false;
+      v.play()
+        .catch(() => {
+          v.muted = true;
+          return v.play().catch(() => {});
+        })
+        .finally(syncState);
+    } else {
+      v.pause();
+      syncState();
+    }
+  }, [videoInView]);
+
+  // Clic del usuario (gesto válido): si está en pausa reproduce con sonido;
+  // si suena en mudo lo activa; si ya suena, pausa.
   const toggleVideo = () => {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) {
       v.muted = false;
-      v.play();
-      setVideoPlaying(true);
+      v.play().catch(() => {});
+    } else if (v.muted) {
+      v.muted = false;
     } else {
       v.pause();
-      setVideoPlaying(false);
     }
+    syncState();
   };
 
   return (
@@ -70,6 +103,7 @@ export function Nosotros() {
         >
           <div className="lg:col-span-4 order-2 lg:order-1">
             <motion.div
+              ref={videoWrapRef}
               variants={fadeUp}
               className="group relative aspect-[9/16] w-full max-w-sm mx-auto overflow-hidden lg:max-w-none"
             >
@@ -79,25 +113,34 @@ export function Nosotros() {
                 loop
                 playsInline
                 preload="metadata"
-                onEnded={() => setVideoPlaying(false)}
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
 
               <button
                 onClick={toggleVideo}
-                aria-label={videoPlaying ? "Pausar video" : "Reproducir video"}
+                aria-label={
+                  !videoPlaying
+                    ? "Reproducir video"
+                    : videoMuted
+                      ? "Activar sonido"
+                      : "Pausar video"
+                }
                 className="absolute inset-0 grid cursor-pointer place-items-center"
               >
                 <span
                   className={`grid h-16 w-16 place-items-center rounded-full bg-white/95 text-black shadow-2xl transition-all duration-300 ${
-                    videoPlaying ? "opacity-0 scale-90" : "opacity-100 scale-100 group-hover:scale-110"
+                    videoPlaying && !videoMuted
+                      ? "opacity-0 scale-90"
+                      : "opacity-100 scale-100 group-hover:scale-110"
                   }`}
                 >
-                  {videoPlaying ? (
-                    <Pause className="h-6 w-6 fill-current" />
-                  ) : (
+                  {!videoPlaying ? (
                     <Play className="h-6 w-6 fill-current translate-x-0.5" />
+                  ) : videoMuted ? (
+                    <VolumeX className="h-6 w-6" />
+                  ) : (
+                    <Pause className="h-6 w-6 fill-current" />
                   )}
                 </span>
               </button>

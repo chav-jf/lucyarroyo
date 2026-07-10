@@ -5,16 +5,17 @@ import { Menu, X } from "lucide-react";
 
 const LOGO_URL = "/logo.png";
 
+// Anclas absolutas a la home para que funcionen también desde otras rutas (ej. /bailarines).
 const links = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#clases", label: "Clases" },
-  { href: "#planes", label: "Planes" },
-  { href: "#profesores", label: "Profesores" },
-  { href: "#galeria", label: "Galería" },
-  { href: "#redes", label: "Redes" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#clases", label: "Clases" },
+  { href: "/#planes", label: "Planes" },
+  { href: "/#profesores", label: "Profesores" },
+  { href: "/#galeria", label: "Galería" },
+  { href: "/#redes", label: "Redes" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 export function Navbar() {
@@ -41,7 +42,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 md:px-8">
-          <a href="#inicio" className="flex items-center gap-3 shrink-0" aria-label="Lucy Arroyo — Inicio">
+          <a href="/#inicio" className="flex items-center gap-3 shrink-0" aria-label="Lucy Arroyo — Inicio">
             <img
               src={LOGO_URL}
               alt="Lucy Arroyo Escuela de Baile"
@@ -73,7 +74,7 @@ export function Navbar() {
 
           <div className="hidden lg:block">
             <a
-              href="#contacto"
+              href="/#contacto"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent hover:shadow-[0_0_30px_-6px_var(--color-primary)]"
             >
               Inscríbete
@@ -137,7 +138,7 @@ export function Navbar() {
                 </Link>
               </motion.div>
               <a
-                href="#contacto"
+                href="/#contacto"
                 onClick={() => setOpen(false)}
                 className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 text-base font-semibold text-white"
               >
